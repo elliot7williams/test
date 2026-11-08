@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1120" />
+  <meta name="description" content="An unofficial revival of the classic NightcoreMaker experience. Convert songs and share temporary creations." />
+  <title>NightcoreMaker · Community Revival</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-glow" aria-hidden="true"></div>
+  <div class="topline"><span class="dot"></span> NOSTALGIC WEB MUSIC LAB <span class="topline-right">2000s spirit · built for today</span></div>
+  <header class="site-header shell">
+    <a class="brand" href="#home" aria-label="NightcoreMaker Revival home"><span class="logo-mark">N<span>↗</span></span><span class="brand-copy"><strong>Nightcore<span>Maker</span></strong><small>COMMUNITY REVIVAL</small></span></a>
+    <nav aria-label="Main navigation"><a href="#studio">Create</a><a href="#creations">Recent creations</a><a href="#about">About</a><button id="classicToggle" class="mode-toggle" type="button" aria-pressed="false" title="Switch between modern and nostalgia-inspired views">◫ Classic view</button><a class="nav-cta" href="#studio">Make nightcore <span>↗</span></a></nav>
+  </header>
+  <main id="home" class="shell">
+    <div class="classic-banner" id="classicBanner" hidden><strong>CLASSIC-INSPIRED VIEW</strong><span>This is an original recreation, not a verified screenshot or recovered original code from NightcoreMaker.com.</span></div>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="line"></span> THE CLASSIC MUSIC GENERATOR, REIMAGINED</div>
+        <h1>Your song.<br /><em>A little faster.</em><br />A lot more magic.</h1>
+        <p>Upload a track, turn up the speed and pitch, and make that unmistakable nightcore sound. Download it, or share it with the community for the next 24 hours.</p>
+        <a href="#studio" class="button button-primary hero-button">Start creating <span>↗</span></a>
+        <div class="hero-foot"><span>✦ No account needed</span><span>✦ Works in your browser</span><span>✦ Temporary creations feed</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb orb-outer"></div><div class="orb orb-middle"></div><div class="orb orb-inner"></div>
+        <div class="orb-center"><svg viewBox="0 0 100 100" fill="none"><path d="M37 22v49c-4-5-17-4-22 4-6 11 2 18 15 15 10-2 15-10 15-22V37l35-8v30c-4-5-17-4-22 4-6 11 2 18 15 15 10-2 15-10 15-22V12L37 22Z" fill="currentColor"/></svg></div>
+        <span class="art-label art-label-one">+25% speed</span><span class="art-label art-label-two">HIGHER PITCH ♪</span>
+        <div class="art-equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <div class="section-heading" id="studio"><div><span class="section-num">01 / THE STUDIO</span><h2>Make something <em>electric.</em></h2></div><span class="section-side">A FEW CLICKS. A WHOLE NEW FEEL.</span></div>
+    <section class="studio-grid" aria-label="Nightcore creator">
+      <div class="panel editor-panel">
+        <div class="panel-header"><span><span class="mini-dot"></span> NIGHTCORE CONVERTER</span><span class="version">REVIVAL V1.1</span></div>
+        <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Choose or drop an audio file">
+          <input id="audioFile" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac" hidden />
+          <div class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V3m0 0L7 8m5-5 5 5"/><path d="M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4"/></svg></div>
+          <h3 id="fileTitle">Drop your song here</h3>
+          <p id="fileSub">or click to choose an audio file from your device</p>
+          <span class="file-hint">MP3 · WAV · M4A · OGG and supported audio · up to 20 MB</span>
+        </div>
+        <div class="demo-line"><span>Just want to try it?</span> <button id="demoBtn" class="link-button" type="button">Load original demo melody ↗</button></div>
+        <div id="editArea" class="edit-area">
+          <div class="waveform-head"><span>TRACK PREVIEW</span><span id="timeText">00:00 / 00:00</span></div>
+          <div class="waveform-container"><canvas id="waveCanvas" height="115" aria-label="Audio waveform"></canvas><div class="wave-empty" id="waveEmpty">Your waveform will appear here</div></div>
+          <audio id="player" preload="metadata" controls aria-label="Audio preview"></audio>
+          <div class="slider-head"><label for="speedRange">Speed & pitch <small>(classic linked mode)</small></label><strong id="speedValue">1.25×</strong></div>
+          <input id="speedRange" type="range" min="0.65" max="1.75" step="0.01" value="1.25" />
+          <div class="range-labels"><span>0.65× · slower</span><span>1.00× · original</span><span>1.75× · faster</span></div>
+          <div class="preset-row" aria-label="Sound presets"><button data-speed="1.25" class="preset active" type="button">✦ Classic 1.25×</button><button data-speed="1.40" class="preset" type="button">Ultra 1.40×</button><button data-speed="0.80" class="preset" type="button">Daycore 0.80×</button><button data-speed="1.00" class="preset" type="button">Original</button></div>
+          <div class="slider-head volume-title"><label for="volumeRange">Output volume</label><strong id="volumeValue">100%</strong></div>
+          <input id="volumeRange" type="range" min="0.2" max="1.5" step="0.05" value="1" />
+          <div class="action-row"><button class="button button-primary" type="button" id="downloadBtn" disabled>↓ Export WAV</button><button class="button button-outline" type="button" id="shareToggle" disabled>Share for 24 hours ↗</button></div>
+          <p class="microcopy">Your file stays on your device unless you choose to share it. The export changes both playback speed and musical pitch.</p>
+          <div id="message" class="message" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+      <aside class="panel share-panel" id="sharePanel">
+        <div class="panel-header"><span><span class="mini-dot mint"></span> PUBLISH YOUR CREATION</span><span class="version">24H ONLY</span></div>
+        <div class="share-graphic" aria-hidden="true"><div class="share-disc"><div>♪</div></div><div class="share-stars">✦ &nbsp; ⋆ &nbsp; ✧</div></div>
+        <h3>Made something good?<br /><em>Let everyone hear it.</em></h3>
+        <p>Your mix can appear in the recent creations section for 24 hours, or until newer tracks replace it. After that, it's removed from the server.</p>
+        <form id="shareForm">
+          <label for="trackName">SONG TITLE</label><input id="trackName" maxlength="90" autocomplete="off" placeholder="Your nightcore title" required />
+          <label for="artistName">CREATOR NAME</label><input id="artistName" maxlength="60" autocomplete="nickname" placeholder="Anonymous DJ" />
+          <label class="consent"><input type="checkbox" id="rightsCheck" required /><span>I own or have permission to share this audio publicly, and understand it will be accessible to visitors.</span></label>
+          <button id="publishBtn" class="button button-publish" type="submit" disabled>Publish to recent creations <span>↗</span></button>
+        </form>
+        <p class="publish-info" id="publishInfo">Public posting becomes available when you run the included server.</p>
+        <div id="publishMessage" class="message" role="status" aria-live="polite"></div>
+      </aside>
+    </section>
+
+    <div class="section-heading creations-heading" id="creations"><div><span class="section-num">02 / THE COMMUNITY</span><h2>Fresh from <em>the feed.</em></h2></div><span class="section-side"><span class="live-indicator"></span> UPDATED AS PEOPLE UPLOAD</span></div>
+    <section class="feed-section"><div class="feed-top"><div><h3>Recent creations <span class="count" id="trackCount">0</span></h3><p>Every mix is temporary, just like the old days.</p></div><button id="refreshBtn" class="refresh-btn" type="button">↻ Refresh feed</button></div><div class="feed-list" id="feedList"><div class="empty-feed"><span>♫</span><strong>Nothing here yet</strong><p>Be the first to share a creation.</p></div></div><div class="feed-bottom"><span>↻ Songs expire after 24 hours · newest songs first · 40 slots</span><span id="serverStatus">CHECKING SERVER…</span></div></section>
+
+    <section class="about" id="about"><div><span class="section-num">03 / THE STORY</span><h2>A little piece of<br /><em>old internet magic.</em></h2></div><div class="about-copy"><p>Remember when a simple website could turn your favourite track into nightcore, and everyone could listen to the latest creations? This is an <strong>unofficial, independently rebuilt tribute</strong> to that experience.</p><p>The original NightcoreMaker.com is no longer available. Its complete historic code and design have not been recovered. This recreation uses original code, graphics and sounds, preserving the core idea.</p><div class="support-note"><span>♡</span><div><strong>Keeping the lights on</strong><p>You remember the old site asking for hosting donations. This remake doesn't accept donations yet—no payment links or charges are enabled.</p></div></div></div></section>
+  </main>
+  <footer class="site-footer shell"><span class="footer-brand">Nightcore<span>Maker</span> <small>COMMUNITY REVIVAL</small></span><span>Not affiliated with the former NightcoreMaker.com operators. Share only music you have rights to distribute.</span><a href="#home">BACK TO TOP ↑</a></footer>
+</body>
+</html>
